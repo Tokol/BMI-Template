@@ -8,9 +8,6 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -23,23 +20,12 @@ public class ResultActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_result);
         bmiResultText = findViewById(R.id.bmiValues);
-        recalculate = findViewById(R.id.btnReCalcualteAgain);
-        Intent intent = getIntent();
-        double bmi = intent.getDoubleExtra("bmiValue",0);
+        recalculate = findViewById(R.id.btnReCalcualateAgain);
 
-
-        bmiResultText.setText(bmi+"");
 
 
 
         /// logic here
-
-        recalculate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
 
     }

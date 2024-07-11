@@ -37,10 +37,10 @@ int weightValue, ageValue;
         setContentView(R.layout.activity_main);
     weightValueText = findViewById(R.id.weightText);
     ageValueText = findViewById(R.id.ageText);
-    increaseAgeButton = findViewById(R.id.plusWeight);
-    decreaseAgeButton = findViewById(R.id.minusWeight);
-    increaseWeightButton = findViewById(R.id.plusAge);
-    decreaseWeightButton = findViewById(R.id.minusAge);
+    increaseAgeButton = findViewById(R.id.plusAge);
+    decreaseAgeButton = findViewById(R.id.minusAge);
+    increaseWeightButton = findViewById(R.id.plusWeight);
+    decreaseWeightButton = findViewById(R.id.minusWeight);
     calculateBtn = findViewById(R.id.calulateBtn);
     heightSeekBar = findViewById(R.id.seekBar);
     displayHeight = findViewById(R.id.displayHeight);
@@ -49,6 +49,8 @@ int weightValue, ageValue;
     heightValue = Integer.valueOf(displayHeight.getText().toString());
     weightValue = Integer.valueOf(weightValueText.getText().toString());
     ageValue = Integer.valueOf(ageValueText.getText().toString());
+
+
 
 
 
@@ -110,26 +112,11 @@ increaseAgeButton.setOnClickListener(new View.OnClickListener() {
 });
 
 
-
-
-
-
     calculateBtn.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Log.d("WEIGHTVALUE", weightValue+"");
-            Log.d("heightValue", heightValue+"");
-            double bmi = calculateBMI(weightValue,heightValue);
 
-            Log.d("BMI", bmi+"");
-            Intent intent = new Intent(MainActivity.this,ResultActivity.class);
 
-            intent.putExtra("bmiValue", bmi);
-
-          //  intent.putExtra("gender",genderValue);
-            // we can send many data from one  activity to another activity.
-
-            startActivity(intent);
 
         }
     });
@@ -139,24 +126,7 @@ increaseAgeButton.setOnClickListener(new View.OnClickListener() {
     }
 
 
-   double calculateBMI(int weight, int heightValue){
-    double weightDouble= (double) weight;
-       double heighttDouble= (double) heightValue;
 
-       Log.d("weightC", weight+"");
-       Log.d("heightValueC", heightValue+"");
-    double num = weightDouble/ (heighttDouble*heighttDouble);
-       Log.d("calucatedBMI", num*10000+"");
-
-    double bmis  =  num*10000.00;
-
-
-       BigDecimal bd = new BigDecimal(bmis).setScale(2, RoundingMode.HALF_UP);
-       double roundedBMI = bd.doubleValue();
-
-       return roundedBMI;
-
-   }
 
 
 }

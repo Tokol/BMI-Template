@@ -6,6 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardResult"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginTop="100dp"
@@ -23,6 +24,7 @@
 >
 
             <TextView
+                android:id="@+id/bmiType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#00FF00"
@@ -55,6 +57,7 @@
                 />
 
             <TextView
+                android:id="@+id/bmiMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
@@ -71,11 +74,13 @@
 
 
     <Button
-        android:id="@+id/btnReCalcualteAgain"
+        android:layout_below="@+id/cardResult"
+        android:layout_marginTop="26dp"
+        android:id="@+id/btnReCalcualateAgain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ReCalcualte Again"
-        android:layout_alignParentBottom="true"
+        android:text="@string/recalculate"
+
         android:backgroundTint="@color/btn_color"
 
         />
