@@ -38,6 +38,7 @@
                 />
 
             <TextView
+                android:id="@+id/bmiValues"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
@@ -70,6 +71,7 @@
 
 
     <Button
+        android:id="@+id/btnReCalcualteAgain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ReCalcualte Again"

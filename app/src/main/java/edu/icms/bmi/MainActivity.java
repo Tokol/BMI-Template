@@ -1,6 +1,8 @@
 package edu.icms.bmi;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -10,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -78,11 +83,20 @@ int weightValue, ageValue;
         }
     });
 
+    decreaseWeightButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            weightValue--;
+
+            weightValueText.setText(weightValue+"");
+        }
+    });
+
 decreaseAgeButton.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        weightValue--;
-        weightValueText.setText(weightValue+"");
+        ageValue--;
+        ageValueText.setText(ageValue+"");
     }
 });
 
@@ -96,21 +110,26 @@ increaseAgeButton.setOnClickListener(new View.OnClickListener() {
 });
 
 
-    decreaseAgeButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            ageValue--;
-            ageValueText.setText(ageValue+"");
-        }
-    });
+
 
 
 
     calculateBtn.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            int bmi = calculateBMI(weightValue,heightValue);
+            Log.d("WEIGHTVALUE", weightValue+"");
+            Log.d("heightValue", heightValue+"");
+            double bmi = calculateBMI(weightValue,heightValue);
 
+            Log.d("BMI", bmi+"");
+            Intent intent = new Intent(MainActivity.this,ResultActivity.class);
+
+            intent.putExtra("bmiValue", bmi);
+
+          //  intent.putExtra("gender",genderValue);
+            // we can send many data from one  activity to another activity.
+
+            startActivity(intent);
 
         }
     });
@@ -120,9 +139,22 @@ increaseAgeButton.setOnClickListener(new View.OnClickListener() {
     }
 
 
-   int calculateBMI(int weight, int heightValue){
-    int num = weight/ (heightValue*heightValue);
-    return num*10000;
+   double calculateBMI(int weight, int heightValue){
+    double weightDouble= (double) weight;
+       double heighttDouble= (double) heightValue;
+
+       Log.d("weightC", weight+"");
+       Log.d("heightValueC", heightValue+"");
+    double num = weightDouble/ (heighttDouble*heighttDouble);
+       Log.d("calucatedBMI", num*10000+"");
+
+    double bmis  =  num*10000.00;
+
+
+       BigDecimal bd = new BigDecimal(bmis).setScale(2, RoundingMode.HALF_UP);
+       double roundedBMI = bd.doubleValue();
+
+       return roundedBMI;
 
    }
 
