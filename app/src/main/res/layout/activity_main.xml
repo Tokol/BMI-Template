@@ -84,7 +84,7 @@
                     android:contentDescription="@string/image_desc"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/icon_trans"
+                    android:src="@drawable/icon_male"
 
                     />
 
